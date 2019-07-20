@@ -1,9 +1,10 @@
 <br />
+
 <div class="container">
     <h2>Employer Registration</h2>
     <hr>
 
-    <form method="POST">
+    <form [formGroup]="empRegister" (ngSubmit)="onSubmit(empRegister.value)" ngNativeValidate>
         <div class="card">
             <div class="card-header">
                 Login Information
@@ -13,7 +14,11 @@
                     <label for="email">
                         Email:
                     </label>
-                    <input type="email" class="form-control" placeholder="Email Address" id="email" name="email" />
+                    <input type="email" formControlName="email" class="form-control" required  />
+                    
+                        <div *ngIf="empRegister.controls.email.errors?.required">Email is required</div>
+                        <div *ngIf="empRegister.controls.email.errors?.email">Email must be a valid email address</div>
+                   
                 </div>
 
                 <div class="form-group col-md-6">
@@ -21,8 +26,11 @@
                         Password:
                     </label>
                     <input type="password" class="form-control" placeholder="Enter Password" id="password"
-                        name="password" />
-                    <small id="passwordHelpInline" class="text-muted">
+                        name="password" formControlName="password" required />
+                        <div *ngIf="empRegister.controls.password.errors?.required">Password is required</div>
+                        <div *ngIf="empRegister.controls.password.errors?.minlength">Password must be at least 8 characters</div>
+
+                    <small class="text-muted">
                         Must be 8-20 characters long.
                     </small>
                 </div>
@@ -32,7 +40,10 @@
                         Confirm Password:
                     </label>
                     <input type="password" class="form-control" placeholder="Confirm Password" id="confirm_password"
-                        name="confirm_password" />
+                        formControlName="confirm_password" required />
+                        <div *ngIf="empRegister.controls.confirm_password.errors?.required">Password is required</div>
+                        <div *ngIf="empRegister.controls.confirm_password.errors?.mustMatch">Passwords must match</div>
+
                 </div>
             </div>
         </div>
@@ -45,32 +56,40 @@
             <div class="card-body">
 
                 <div class="form-group col-md-6">
-                    <label for="cmp_name">Company Name:</label>
-                    <input type="text" class="form-control" placeholder="Company name" id="cmp_name" name="cmp_name" />
+                    <label for="company_name">Company Name:</label>
+                    <input type="text" class="form-control" placeholder="Company name" id="company_name"
+                        formControlName="company_name" required />
+                        <div *ngIf="empRegister.controls.company_name.errors?.required">Name is required</div>
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="cmp_website">Company Website:</label>
-                    <input type="text" class="form-control" placeholder="Company website" id="cmp_website"
-                        name="cmp_website" />
+                    <label for="company_website">Company Website:</label>
+                    <input type="text" class="form-control" placeholder="Company website" id="company_website"
+                        formControlName="company_website" required />
+                        <div *ngIf="empRegister.controls.company_website.errors?.required">Website is required</div>
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="address">
+                    <label for="company_address">
                         Company Address:
                     </label>
-                    <input type="text" class="form-control" placeholder="Current Company Address " id="cmp_address"
-                        name="cmp_address" />
+                    <input type="text" class="form-control" placeholder="Current Company Address " id="company_address"
+                        formControlName="company_address" required />
+                        <div *ngIf="empRegister.controls.company_address.errors?.required">Address is required</div>
+
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="cmp_city">Comapany City:</label>
-                    <input type="text" class="form-control" placeholder="Company City" id="cmp_city" name="cmp_city" />
+                    <label for="company_city">Comapany City:</label>
+                    <input type="text" class="form-control" placeholder="Company City" id="company_city"
+                        formControlName="company_city" required />
+                        <div *ngIf="empRegister.controls.company_city.errors?.required">City is required</div>
+
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="cmp_state">Company State:</label>
-                    <select class="form-control" id="cmp-state" name="cmp_state">
+                    <label for="company_state">Company State:</label>
+                    <select class="form-control" id="company_state" formControlName="company_state" required>
                         <option value="">-----------------------------State-----------------------------</option>
                         <option value="Andhra Pradesh">Andhra Pradesh</option>
                         <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -102,20 +121,26 @@
                         <option value="Uttar Pradesh">Uttar Pradesh</option>
                         <option value="West Bengal">West Bengal</option>
                     </select>
+                    <div *ngIf="empRegister.controls.company_state.errors?.required">state is required</div>
+
+                    
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="cmp_profile">Company Profile:</label>
-                    <textarea class="form-control" rows="4" id="cmp_profile" name="cmp_profile"></textarea>
+                    <label for="company_profile">Company Profile:</label>
+                    <textarea class="form-control" rows="4" id="company_profile"
+                        formControlName="company_profile" required></textarea>
+                    <div *ngIf="empRegister.controls.company_profile.errors?.required">Profile is required</div>
+
 
                 </div>
             </div>
         </div>
 
         <br />
-        <!-- <input type="submit" /> -->
+        <!-- <input type="submit" />  [disabled]="empregister.invalid"      -->
         <div class="form-group">
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success" [disabled]="empRegister.invalid">Submit</button>
         </div>
     </form>
     <br />

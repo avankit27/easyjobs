@@ -1,0 +1,48 @@
+<br />
+<ng-template #msg>
+    <div class="text-center">
+        <div class="spinner-border text-dark" role="status">
+            <span class="sr-only ">Loading...</span>
+        </div>
+    </div>
+</ng-template>
+
+<div *ngIf="jobs; else msg;">
+
+    <div class="row">
+        <div class="col-md-3"></div>
+
+        <div class="col-md-6" style="margin: 20px;">
+            <div *ngFor="let jb of jobs">
+                <div class="card">
+                    <div class="card-header">
+                        <p style="color: blueviolet;"><a routerLink="/home/{{jb.jpid}}" target="_blank" > {{jb.job_title}}</a> </p>
+                        <p style="color:chocolate;"><b> {{jb.company_name}} </b></p>
+                    </div>
+
+                    <div class="body" style="padding: 20px;">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p><b>KeySkills:</b> {{jb.skills}}</p>
+                                <p><b>Location:</b> {{jb.loc}} </p>
+                                <p><b>Experience:</b> {{jb.experience}} years</p>
+                            </div>
+
+                            <div class="col-md-2">
+                                <button class="btn btn-warning">Apply</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <p><b>Posted on: </b> {{jb.post_date}}</p>
+                    </div>
+                </div>
+                <br /><br />
+            </div>
+        </div>
+
+        <div class="col-md-3"></div>
+    </div>
+</div>
+<router-outlet></router-outlet>
