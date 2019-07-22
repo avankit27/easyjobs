@@ -7,6 +7,8 @@ import { RegisterComponent } from './Employer/register/register.component';
 import { JobpostingComponent } from './JobPosting/jobposting/jobposting.component';
 import { EmpComponent } from './Employer/emp/emp.component';
 import { JobupdateComponent } from './JobPosting/jobupdate/jobupdate.component';
+import { LoginGuard } from './Employer/login.guard';
+import { EmpHomeComponent } from './Employer/emp-home/emp-home.component';
 
 
 const routes: Routes = [
@@ -25,13 +27,15 @@ const routes: Routes = [
     path: 'employer',
     component: EmpComponent,
     children: [
-      { path: '', redirectTo: 'jobposting', pathMatch: 'full' },
+     { path: '', redirectTo: 'home', pathMatch: 'full' },
+     { path: 'home', component: EmpHomeComponent },
       { path: 'registration', component: RegisterComponent },
       { path: 'jobposting/:id', component: JobpostingComponent },
       { path: 'profile/:id', component: EmpUpdateComponent },
       { path: 'jobupdate/:id', component: JobupdateComponent },
 
-    ]
+    ],
+    canActivate:[LoginGuard]
   },
 
 

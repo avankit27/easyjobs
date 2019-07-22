@@ -16,6 +16,7 @@ import { SearchComponent } from './Home/search/search.component';
 import { JobpanelComponent } from './Home/jobpanel/jobpanel.component';
 import { JobdescriptionComponent } from './Home/jobdescription/jobdescription.component';
 import { EmpComponent } from './Employer/emp/emp.component';
+import { EmpHomeComponent } from './Employer/emp-home/emp-home.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { EmpComponent } from './Employer/emp/emp.component';
     JobpanelComponent,
     JobdescriptionComponent,
     EmpComponent,
+    EmpHomeComponent,
   ],
   imports: [
     BrowserModule,
