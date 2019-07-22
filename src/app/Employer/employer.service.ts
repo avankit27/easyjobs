@@ -13,6 +13,11 @@ export class EmployerService {
   // http://localhost/easyjobs/api/employer
   constructor(private http: HttpClient) { }
 
+  loginEmp(email,pas){
+    return this.http.get(`${this.api}?id=${email}&password=${pas}`)
+
+  }
+
   getEmp(eid){
     return this.http.get(`${this.api}/${eid}`)
 
