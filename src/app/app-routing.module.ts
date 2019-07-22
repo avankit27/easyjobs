@@ -11,17 +11,28 @@ import { JobupdateComponent } from './JobPosting/jobupdate/jobupdate.component';
 
 const routes: Routes = [
 
-  {path:'home',component:HomeComponent},
-  {path:'', redirectTo:'/home',pathMatch:'full'},
-  
-  {path:'home/:id',component:JobdescriptionComponent},
-  {path:'employer',component:EmpComponent},
-  {path:'employer/registration',component:RegisterComponent},    // Employer Register Component
-  {path:'employer/profile/:id',component:EmpUpdateComponent},  // Employer Update Component
-  {path:'employer/jobposting',component:JobpostingComponent},
-  {path:'employer/jobupdate/:id',component:JobupdateComponent},
+  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 
+  { path: 'home/:id', component: JobdescriptionComponent },
+  /*   { path: 'employer', component: EmpComponent },
+      {path:'employer/registration',component:RegisterComponent},    // Employer Register Component
+      {path:'employer/profile/:id',component:EmpUpdateComponent},  // Employer Update Component
+      {path:'employer/jobposting',component:JobpostingComponent},
+      {path:'employer/jobupdate/:id',component:JobupdateComponent}, */
 
+  {
+    path: 'employer',
+    component: EmpComponent,
+    children: [
+      { path: '', redirectTo: 'jobposting', pathMatch: 'full' },
+      { path: 'registration', component: RegisterComponent },
+      { path: 'jobposting/:id', component: JobpostingComponent },
+      { path: 'profile/:id', component: EmpUpdateComponent },
+      { path: 'jobupdate/:id', component: JobupdateComponent },
+
+    ]
+  },
 
 
 ];

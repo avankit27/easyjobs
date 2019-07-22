@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobprofileService } from '../jobprofile.service';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-jobposting',
@@ -9,11 +10,12 @@ import { NgForm } from '@angular/forms';
 })
 export class JobpostingComponent implements OnInit {
   jobpost;
-  eid=103;
+  eid;
   today;
-  constructor(private js :JobprofileService) { }
+  constructor(private js :JobprofileService,private ar:ActivatedRoute) { }
 
   ngOnInit() {
+    this.eid = this.ar.snapshot.params['id'];
 
   }
 

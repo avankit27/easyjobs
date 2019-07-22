@@ -9,12 +9,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EmpUpdateComponent implements OnInit {
 
-  idd=103;
+  idd;
   emprecord;
   constructor(private es :EmployerService, private ar:ActivatedRoute) { }
 
   ngOnInit() {
-    //this.idd = this.ar.snapshot.params['id'];
+    this.idd = this.ar.snapshot.params['id'];
     return this.es.getEmp(this.idd).subscribe( r => {this.emprecord=r; } );
   }
 

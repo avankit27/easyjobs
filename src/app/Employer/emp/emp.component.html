@@ -18,25 +18,26 @@
                 <a class="nav-item nav-link" routerLinkActive="active" routerLink="">About Us</a>
             </li>
 
-            <p style="color: blueviolet;">Welcome {{ emp_name }} </p>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     Employer
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" routerLink="employer/jobposting">Post Job</a>
+                    <a class="dropdown-item" routerLink="jobposting/{{eid}} ">Post Job</a>
                     <a class="dropdown-item" routerLink="">View Posted Job</a>
-                    <a class="dropdown-item" routerLink="employer/jobupdate/{{eid}} ">Edit Profile</a>
-                    <a class="dropdown-item" routerLink="">Sign Out</a>
+                    <a class="dropdown-item" routerLink="profile/{{eid}} ">Edit Profile</a>
+                    <a class="dropdown-item" routerLink="" (click)="signout()">Sign Out</a>
                 </div>
             </li>
-            <li>
-                <button class="btn btn-default">Sign Out</button>
+
+            <li class="nav-item" style="color: blueviolet;">
+                <a class="nav-item navbar-text navbar-right"> Welcome {{ emp_name }} </a>
             </li>
 
         </ul>
     </div>
 </nav>
 
+<app-footer></app-footer>
 <router-outlet></router-outlet>

@@ -14,8 +14,9 @@ export class EmployerService {
   constructor(private http: HttpClient) { }
 
   loginEmp(email,pas){
-    return this.http.get(`${this.api}?id=${email}&password=${pas}`)
-
+    console.log(`${this.api}?id=${email}&pass=${pas}`);
+    return this.http.get(`${this.api}?id=${email}&pass=${pas}`)   // Here id is the email as first parameter is id in web api
+    
   }
 
   getEmp(eid){
